@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Messages - Flask Message App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+            <h1>Flask Message App</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('message') }}">Send Message</a></li>
+                <li><a href="{{ url_for('read') }}">Read Messages</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <h2>All Messages</h2>
+            {% if messages %}
+            <table class="messages-table">
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Username</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for timestamp, data in messages %}
+                    <tr>
+                        <td class="timestamp">{{ timestamp }}</td>
+                        <td class="username">{{ data.username }}</td>
+                        <td class="message">{{ data.message }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="no-messages">No messages yet. <a href="{{ url_for('message') }}">Send the first message!</a></p>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>
+
