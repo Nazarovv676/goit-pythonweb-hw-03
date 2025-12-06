@@ -35,13 +35,6 @@ Or using Makefile:
 make install
 ```
 
-3. Decode the logo (if not already done):
-```bash
-make decode-logo
-# Or manually:
-base64 -d static/logo.png.base64 > static/logo.png
-```
-
 ### Running
 
 Run the application:
@@ -108,8 +101,7 @@ The storage directory (`app/storage`) is mounted as a volume, so `data.json` per
 │   └── error.html
 ├── static/
 │   ├── style.css
-│   ├── logo.png.base64
-│   └── logo.png            # Auto-generated from base64
+│   └── logo.png            # Logo image
 ├── pyproject.toml        # Poetry configuration
 ├── poetry.lock           # Poetry lock file (generated)
 ├── Dockerfile
@@ -130,7 +122,6 @@ The storage directory (`app/storage`) is mounted as a volume, so `data.json` per
 
 - `install` - Install dependencies with Poetry
 - `run` - Run the app locally (via Poetry)
-- `decode-logo` - Decode logo.png from base64
 - `docker-build` - Build Docker image
 - `docker-up` - Start Docker container
 - `docker-down` - Stop Docker container
@@ -140,6 +131,5 @@ The storage directory (`app/storage`) is mounted as a volume, so `data.json` per
 
 - The app listens on `0.0.0.0:3000` by default
 - Messages are stored in `app/storage/data.json` with timestamps as keys
-- The logo is automatically decoded from base64 on first run if missing
 - This project uses Poetry for dependency management
 
